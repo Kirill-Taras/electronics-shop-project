@@ -1,5 +1,4 @@
 import csv
-from pathlib import Path
 
 
 class Item:
@@ -38,23 +37,35 @@ class Item:
 
     @property
     def name(self) -> str:
+        """
+        Геттер для name.
+        """
         return self.__name
 
     @name.setter
     def name(self, name) -> None:
+        """
+        Обрезает строку до 10 символов.
+        """
         self.__name = name[0:10]
 
     @classmethod
     def instantiate_from_csv(cls, file_name):
+        """
+        Класс-метод, инициализирующий экземпляры класса Item данными из файла .csv.
+        """
         cls.all = []
-        with open(file_name, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(file_name, newline='', encoding='windows-1251') as csv_file:
+            reader = csv.DictReader(csv_file)
             for row in reader:
                 name, price, quantity = row['name'], float(row['price']), int(row['quantity'])
                 cls(name, price, quantity)
 
     @staticmethod
     def string_to_number(number) -> int:
+        """
+        Статический метод, возвращающий число из числа-строки.
+        """
         if isinstance(number, str):
-            number = int(number)
-            return number
+            int_number = float(number)
+            return int(int_number)
