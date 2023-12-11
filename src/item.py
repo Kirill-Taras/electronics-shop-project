@@ -69,3 +69,9 @@ class Item:
         if isinstance(number, str):
             int_number = float(number)
             return int(int_number)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}{self.__name, self.price, self.quantily}"
+
+    def __str__(self) -> str:
+        return self.__name
