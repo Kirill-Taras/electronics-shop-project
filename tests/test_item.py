@@ -10,3 +10,14 @@ def test_item_class():
     Item.pay_rate = 1.5
     test_item.apply_discount()
     assert test_item.price == 15
+
+
+def test_string_to_number():
+    assert Item.string_to_number('77') == 77
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv('../src/items.csv')
+    assert len(Item.all) == 5
+    item1 = Item.all[0]
+    assert item1.name == 'Смартфон'
