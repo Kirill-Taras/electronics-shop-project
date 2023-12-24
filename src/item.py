@@ -1,5 +1,7 @@
 import csv
 
+from src.phone import Phone
+
 
 class Item:
     """
@@ -75,3 +77,9 @@ class Item:
 
     def __str__(self) -> str:
         return self.__name
+
+    def __add__(self, other):
+        if isinstance(other, Phone) or isinstance(other, Item):
+            return self.quantily + other.quantily
+        else:
+            raise ValueError("Объект не пренадлежит классу")
