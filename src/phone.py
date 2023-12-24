@@ -31,8 +31,3 @@ class Phone(Item):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}{self.name, self.price, self.quantily, self.count_simcard}"
-
-
-phone1 = Phone("iPhone 14", 120_000, 5, 10)
-print(phone1.count_simcard)
-print(phone1.number_of_sim())
