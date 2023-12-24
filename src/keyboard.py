@@ -6,22 +6,26 @@ class Mixin:
     lang_change_count = 1
 
     def __init__(self):
-        self.language = "EN"
+        self.__language = "EN"
+
+    @property
+    def language(self):
+        return self.__language
 
     def change_lang(self):
         Mixin.lang_change_count += 1
         if not Mixin.lang_change_count % 2 == 0:
-            self.language = "EN"
+            self.__language = "EN"
         else:
-            self.language = "RU"
-        return self.language
+            self.__language = "RU"
+        return self.__language
 
 
 class Keyboard(Item, Mixin):
 
     def __init__(self, name: str, price: float, quantity: int):
         super().__init__(name, price, quantity)
-        self.language = "EN"
+
 
 
 
