@@ -1,7 +1,5 @@
 import csv
 
-from src.phone import Phone
-
 
 class Item:
     """
@@ -18,6 +16,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
+        super().__init__()
         self.__name = name
         self.price = price
         self.quantily = quantity
@@ -79,7 +78,4 @@ class Item:
         return self.__name
 
     def __add__(self, other):
-        if isinstance(other, Phone) or isinstance(other, Item):
-            return self.quantily + other.quantily
-        else:
-            raise ValueError("Объект не пренадлежит классу")
+        return self.quantily + other.quantily
