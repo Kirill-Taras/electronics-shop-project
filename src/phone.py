@@ -17,6 +17,7 @@ class Phone(Item):
         super().__init__(name, price, quantity)
         self.count_simcard = count_simcard
 
+    @property
     def number_of_sim(self):
         if not isinstance(self.count_simcard, int) or self.count_simcard <= 0:
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
