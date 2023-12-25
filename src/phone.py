@@ -15,20 +15,17 @@ class Phone(Item):
         :param count_simcard: Количество Sim-карт.
         """
         super().__init__(name, price, quantity)
-        self.count_simcard = count_simcard
+        self.__count_simcard = count_simcard
 
     @property
     def number_of_sim(self):
-        if not isinstance(self.count_simcard, int) or self.count_simcard <= 0:
-            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
-        else:
-            return self.count_simcard
+        return self.__count_simcard
 
-    def __add__(self, other):
-        if isinstance(other, Phone) or isinstance(other, Item):
-            return self.quantily + other.quantily
-        else:
-            raise ValueError("Объект не пренадлежит классу")
+    @number_of_sim.setter
+    def number_of_sim(self, count_simcard):
+        if not isinstance(count_simcard, int) or count_simcard <= 0:
+            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
+        self.__count_simcard = count_simcard
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}{self.name, self.price, self.quantily, self.count_simcard}"
+        return f"{self.__class__.__name__}{self.name, self.price, self.quantily, self.__count_simcard}"

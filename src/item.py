@@ -78,4 +78,6 @@ class Item:
         return self.__name
 
     def __add__(self, other):
-        return self.quantily + other.quantily
+        if isinstance(other, Item):
+            return self.quantily + other.quantily
+        raise ValueError("Объект не пренадлежит классу")
