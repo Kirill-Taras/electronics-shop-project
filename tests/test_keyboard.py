@@ -1,3 +1,5 @@
+import pytest
+
 from src.keyboard import Keyboard
 
 
@@ -11,3 +13,5 @@ def test_keyboard_init():
     kb.change_lang()
     assert str(kb.language) == "EN"
 
+    with pytest.raises(AttributeError):
+        kb.language = 'CH'
