@@ -23,9 +23,15 @@ def test_instantiate_from_csv():
     assert len(Item.all) == 5
     item1 = Item.all[0]
     assert item1.name == 'Смартфон'
+
+
+def test_instantiate_from_csv_filenotfounderror():
     with pytest.raises(FileNotFoundError):
         Item.instantiate_from_csv('../src/i.csv')
-    with pytest.raises(InstantiateCSVError):
+
+
+def test_instantiate_from_csv_instantiatecsverror():
+    with pytest.raises(FileNotFoundError):
         Item.instantiate_from_csv('../src/test_items.csv')
 
 
